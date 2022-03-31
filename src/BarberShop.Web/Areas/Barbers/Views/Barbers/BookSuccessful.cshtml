@@ -1,0 +1,22 @@
+﻿@model BooksSuccesfullViewModel
+@{
+    Layout = "_LayoutIdentity";
+    var date = DateTime.ParseExact(@Model.BookedFor, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+    this.ViewData["Title"] = "Your appointment has been accepted.";
+}
+
+<section class="about py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+                    <h1>@ViewData["Title"]</h1>
+                    <h3>Book date: @date.ToString("D")</h3><br />
+                    <h3>Barber: @Model.FirstName @Model.LastName</h3><br />
+                    <h3>Soon, we will contact you at the Email:<br /> <strong>@Model.Email</strong></h3>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-info">Back to home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

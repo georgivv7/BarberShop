@@ -1,0 +1,270 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BarberShop - @ViewData["Title"]</title>
+
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--// Meta tag Keywords -->
+    <!-- Date picker css file -->
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <!-- //Date picker css file -->
+    <!-- responsive tabs --><!-- for pricing section -->
+    <link href="~/css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+    <!-- responsive tabs -->
+    <!-- css files -->
+    <link rel="stylesheet" href="~/css/bootstrap.css"> <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="~/css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="~/css/fontawesome-all.css"> <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
+    <!-- //web-fonts -->
+
+</head>
+
+<body>
+    <!--/header-->
+    <header>
+        <div class="top-bar_sub container-fluid">
+            <div class="top-forms text-left mt-3">
+                <!--/nav-->
+                <div class="header_top">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Home">
+                                        Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-action="About" asp-controller="Home">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Services" asp-controller="Services" asp-action="All">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Barbers" asp-controller="Barbers" asp-action="All">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Location">Location</a>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="contact_grid_right">
+                                        <a asp-area="Barbers" asp-controller="Barbers" asp-action="Appointment">
+                                            <input type="submit" value="Appointment">
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <partial name="_LoginPartial" />
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <!--//nav-->
+            </div>
+        </div>
+    </header>
+    <div class="container-md">
+        <partial name="_CookieConsentPartial" />
+        @RenderBody()
+    </div>
+    <!-- footer section -->
+    <section class="newsletter text-center py-footer">
+        <div class="container py-lg-3">
+            <div class="logo text-center">
+                <partial name="_LogoPartial" />
+            </div><br>
+            <div class="contact_grid_right text-center">
+                <a asp-area="Barbers" asp-controller="Barbers" asp-action="Appointment">
+                    <input type="submit" value="Make An Appointment">
+                </a>
+            </div>
+            <div class="subscribe_inner">
+                <div class="social mt-5">
+                    <ul class="d-flex mt-4 justify-content-center">
+                        <li class="mx-2"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                        <li class="mx-2"><a href="#"><span class="fab fa-twitter"></span></a></li>
+                        <li class="mx-2"><a href="#"><span class="fas fa-rss"></span></a></li>
+                        <li class="mx-2"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+                        <li class="mx-2"><a href="#"><span class="fab fa-google-plus"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright mt-5">
+                <p>© @DateTime.UtcNow.Year Barber. All Rights Reserved | Design by	<a href="http://w3layouts.com/">W3layouts</a> </p>
+            </div>
+        </div>
+    </section>
+    <!-- //footer section -->
+    <!-- js-scripts -->
+    <!-- js -->
+    <script type="text/javascript" src="~/js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap -->
+    <!-- //js -->
+    <!-- script for responsive tabs -->
+    <script src="~/js/easy-responsive-tabs.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!--// script for responsive tabs -->
+
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '{your-app-id}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{api-version}'
+          });
+
+          FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Flexisel-js for-testimonials -->
+    <script type="text/javascript">
+        $(window).load(function() {
+            $("#flexiselDemo1").flexisel({
+                visibleItems:1,
+                animationSpeed: 1000,
+                autoPlay: false,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint:480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint:640,
+                        visibleItems:1
+                    },
+                    tablet: {
+                        changePoint:768,
+                        visibleItems: 1
+                    }
+                }
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
+    <!-- Flexisel-js for-testimonials -->
+    <!-- Calendar js for date picker-->
+    <script src="~/js/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker();
+        });
+    </script>
+    <!-- //Calendar -->
+    <!-- Banner Responsiveslides -->
+    <script src="~/js/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: false,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <!-- // Banner Responsiveslides -->
+    <!-- start-smoth-scrolling -->
+    <script src="~/js/SmoothScroll.min.js"></script>
+    <script type="text/javascript" src="~/js/move-top.js"></script>
+    <script type="text/javascript" src="~/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- start-smoth-scrolling -->
+    <!-- //js-scripts -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

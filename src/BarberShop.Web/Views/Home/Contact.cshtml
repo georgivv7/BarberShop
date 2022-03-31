@@ -1,0 +1,45 @@
+﻿@model ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<section class="contact py-5" id="contact" style="background-color:#222">
+    <div class="container">
+        <div class="heading text-center">
+            <h3 class="heading mb-sm-5 mb-3 text-uppercase">Contact Us</h3>
+        </div>
+        <div class="contact-main-grid">
+            <form asp-controller="Home" asp-action="Contact" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group col-md-auto">
+                            <label asp-for="@Model.FirstName"></label><br />
+                            <input asp-for="@Model.FirstName" type="text" class="form-control">
+                            <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group col-md-auto">
+                            <label asp-for="@Model.LastName"></label><br />
+                            <input asp-for="@Model.LastName" type="text" class="form-control">
+                            <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-auto">
+                    <label asp-for="@Model.EmailAddress">Your Email</label><br />
+                    <input asp-for="@Model.EmailAddress" type="email" class="form-control">
+                    <span asp-validation-for="@Model.EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-auto">
+                    <label asp-for="@Model.Message"></label>
+                    <textarea asp-for="@Model.Message" type="text" class="form-control" placeholder="What you want to tell us..." rows="5"></textarea>
+                    <span asp-validation-for="@Model.Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Send Message">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

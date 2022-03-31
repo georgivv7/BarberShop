@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AllServicesViewModel>
+@{
+    ViewData["Title"] = "Services";
+}
+<!-- services -->
+<section class="services py-5" id="services" style="background-color: #222">
+    <div class="container-fluid">
+        <div class="heading text-center">
+            <i class="fas fa-cut"></i>
+            <h3 class="heading mb-sm-5 mb-3 text-uppercase">Services</h3>
+        </div>
+        <div class="row service-grids">
+            @foreach (var service in Model)
+            {
+                <div class="col-lg-2 col-sm-6 col-12 serviceimage2" style="background-image:url(@service.ImageUrl)">
+                </div>
+                <div class="col-lg-2 col-sm-6 col-12 py-5 px-4 servicetext">
+                    <h4>@service.Name</h4>
+                    <p class="my-3">@service.Description</p>
+                    <a class="bt text-capitalize" href="#" role="button">
+                        @service.Price
+                        <i class="fas fa-cut"></i>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- //services -->
